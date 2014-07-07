@@ -1,0 +1,13 @@
+[package]
+
+name = "ddnsclient"
+version = "0.0.1"
+authors = [ "smoss@gmail.com" ]
+
+[[bin]]
+
+name = "ddnsclient"
+
+[dependencies.curl]
+
+git = "https://github.com/carllerche/curl-rust"
