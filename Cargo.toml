@@ -1,12 +1,12 @@
 [package]
 
-name = "ddnsclient"
+name = "zeclient"
 version = "0.0.1"
 authors = [ "smoss@gmail.com" ]
 
 [[bin]]
 
-name = "ddnsclient"
+name = "zeclient"
 
 [dependencies.curl]
 
