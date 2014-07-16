@@ -1,7 +1,7 @@
 [package]
 
 name = "zeclient"
-version = "0.0.1"
+version = "1.0.0"
 authors = [ "smoss@gmail.com" ]
 
 [[bin]]
