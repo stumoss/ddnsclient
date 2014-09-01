@@ -1,5 +1,4 @@
 #![feature(phase)]
-extern crate std;
 extern crate curl;
 extern crate serialize;
 extern crate regex;
@@ -15,22 +14,19 @@ static username_env : &'static str = "ZECLIENT_USERNAME";
 static password_env : &'static str = "ZECLIENT_PASSWORD";
 
 pub fn main() {
-    let mut domain = String::new();
-    match std::os::getenv(domain_env) {
-        Some(dom) => domain = dom,
-            None => { error!("{} unset", domain_env); () }
+    let domain = match std::os::getenv(domain_env) {
+        Some(domain) => domain,
+        None => fail!("{} unset", domain_env),
     };
 
-    let mut username = String::new();
-    match std::os::getenv(username_env) {
-        Some(uname) => username = uname,
-            None => { error!("{} unset", username_env); () }
+    let username = match std::os::getenv(username_env) {
+        Some(username) => username,
+        None => fail!("{} unset", username_env),
     };
 
-    let mut password = String::new();
-    match std::os::getenv(password_env) {
-        Some(pass) => password = pass,
-            None => { error!("{} unset", password_env); () }
+    let password = match std::os::getenv(password_env) {
+        Some(password) => password,
+        None => fail!("{} unset", password_env),
     };
 
     let full_www_url = format!("{}{}", "https://dynamic.zoneedit.com/auth/dynamic.html?host=*.", domain);
