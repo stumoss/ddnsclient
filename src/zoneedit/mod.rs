@@ -9,17 +9,13 @@ use std::io::Read;
 static UPDATE_URL: &'static str = "https://dynamic.zoneedit.com/auth/dynamic.html";
 
 // Update the DNS entry
-pub fn dns_update(domain: &str, username : &str, password : &str) -> Result<String, String> {
+pub fn dns_update(domain: &str, username: &str, password: &str) -> Result<String, String> {
     let mut headers = Headers::new();
 
-    headers.set(
-        Authorization(
-            Basic {
-                username: username.to_string(),
-                password: Some(password.to_string())
-            }
-            )
-        );
+    headers.set(Authorization(Basic {
+        username: username.to_string(),
+        password: Some(password.to_string()),
+    }));
 
     let full_www_url = format!("{}?zones={}", UPDATE_URL, domain);
     let client = Client::new();

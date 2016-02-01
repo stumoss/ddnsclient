@@ -5,11 +5,11 @@ use std::env;
 use std::process;
 
 // The domain to update
-static DOMAIN_ENV   : &'static str = "DDNSCLIENT_DOMAIN";
+static DOMAIN_ENV: &'static str = "DDNSCLIENT_DOMAIN";
 // Your DDNS provider username
-static USERNAME_ENV : &'static str = "DDNSCLIENT_USERNAME";
+static USERNAME_ENV: &'static str = "DDNSCLIENT_USERNAME";
 // Your DDNS provder password
-static PASSWORD_ENV : &'static str = "DDNSCLIENT_PASSWORD";
+static PASSWORD_ENV: &'static str = "DDNSCLIENT_PASSWORD";
 
 mod zoneedit;
 
@@ -48,28 +48,27 @@ fn get_env_arg(arg_name: &'static str) -> String {
         Err(_) => {
             println!("{} was not defined", arg_name);
             process::exit(1);
-        },
+        }
     }
 }
 
-fn parse_args<'a, 'b>() -> ArgMatches<'a, 'b> {
+fn parse_args<'a>() -> ArgMatches<'a> {
     App::new("showget")
         .version("0.0.1")
         .author("Stuart Moss <samoss@gmail.com>")
         .arg(Arg::with_name("domain")
-             .short("d")
-             .help("The domain to update the IP for")
-             .takes_value(true))
+                 .short("d")
+                 .help("The domain to update the IP for")
+                 .takes_value(true))
         .arg(Arg::with_name("username")
-             .short("u")
-             .help("The username used to login to the dynamic DNS provider's website")
-             .conflicts_with("token")
-             .takes_value(true))
+                 .short("u")
+                 .help("The username used to login to the dynamic DNS provider's website")
+                 .conflicts_with("token")
+                 .takes_value(true))
         .arg(Arg::with_name("password")
-             .short("p")
-             .help("The password used to login to the dynamic DNS provider's website")
-             .conflicts_with("token")
-             .takes_value(true))
+                 .short("p")
+                 .help("The password used to login to the dynamic DNS provider's website")
+                 .conflicts_with("token")
+                 .takes_value(true))
         .get_matches()
- }
-
+}

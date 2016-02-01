@@ -5,6 +5,6 @@ version = "0.0.1"
 authors = [ "smoss@gmail.com" ]
 
 [dependencies]
-hyper = "*"
-regex = "*"
-clap = "*"
+hyper = "^0.7"
+regex = "^0.1"
+clap = "^2.0"

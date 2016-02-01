@@ -8,19 +8,25 @@ extern crate serialize;
 use curl::http;
 use serialize::base64::{ToBase64, STANDARD};
 
-static full_www_url : &'static str = format!("{}{}", "http://members.easydns.com/dyn/dyndns.php?hostname=", domain);
+static full_www_url: &'static str = format!("{}{}",
+                                            "http://members.easydns.com/dyn/dyndns.php?hostname=",
+                                            domain);
 
 // Update the DNS entry
-fn dns_update(domain : &'static str, username : &'static str, password : &'static str) -> Result<String, String> {
+fn dns_update(domain: &'static str,
+              username: &'static str,
+              password: &'static str)
+              -> Result<String, String> {
     let authentication_string = format!("{}:{}", username, password).as_bytes().to_base64(STANDARD);
 
     let response = match http::handle()
-        .post(full_www_url.as_slice(), "")
-        .header("Authorization", format!("Basic {}", authentication_string).as_slice())
-        .exec() {
-            Ok(response) => response,
-            Err(e) => return Err(e),
-        };
+                             .post(full_www_url.as_slice(), "")
+                             .header("Authorization",
+                                     format!("Basic {}", authentication_string).as_slice())
+                             .exec() {
+        Ok(response) => response,
+        Err(e) => return Err(e),
+    };
 
     parse_return_code(std::str::from_utf8(response.get_body()).unwrap());
 }
