@@ -1,10 +1,10 @@
 [package]
 
 name = "ddnsclient"
-version = "0.0.1"
+version = "1.0.2"
 authors = [ "smoss@gmail.com" ]
 
 [dependencies]
-hyper = "0.9"
-regex = "0.1"
+hyper = "0.9.18"
+regex = "0.1.80"
 clap = "2.19.2"

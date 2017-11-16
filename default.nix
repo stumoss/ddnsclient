@@ -1,8 +1,10 @@
-with import <nixpkgs> {};
+{ pkgs ? (import <nixpkgs> {}) }:
+
+with pkgs;
 
 rustPlatform.buildRustPackage rec {
-  name = "ddnsclient-0.0.1";
+  name = "ddnsclient-1.0.2";
   src = ./.;
   buildInputs = [ gcc openssl pkgconfig ];
-  depsSha256 = "0s50ij2qm08q08y44nvk8dpi3rzxvfs4q50531ypsd6hg5l1na9j";
+  cargoSha256 = "10x28289k0mclzj42vf51l5qxildpyqi5l5s6bj532abw83cf0am";
 }
